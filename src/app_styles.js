@@ -9,6 +9,17 @@ export const ImageResponsive = styled.img`
     width:100%;
     height: auto;
 `;
+export const ThumbNailWrapper = styled.div`
+        position: relative;
+        overflow:hidden;
+`;
+export const ImageIcon = styled.img`
+        position: absolute;
+    width: 26%;
+    top: 6px;
+    ${props => (props.isHighLimit ? `right: 6px` : `left: 6px`)};
+`;
+
 
 export const Grid = styled.div`
 outline: 0px solid red;
@@ -17,7 +28,9 @@ margin: 0 auto;
 `;
 export const Row = styled.div`
     display: flex;
+    flex-wrap: wrap;
     outline: 0px solid yellow;
+    justify-content: space-between;
 `;
 
 const media = {
@@ -34,6 +47,8 @@ export const Col = styled.div`
         display:none;
     `)}
     outline: 0px solid green;
+    width:13%;
+    margin-bottom:20px;
 `;
 
 
@@ -106,4 +121,59 @@ export const SearchInput = styled.input`
     appearance: none;
     width:150px;
 `;
+
+// PLAY OVERLAY CSS
+export const PlayOverlayStyled = styled.div`
+    position: absolute;
+left: 0;
+right: 0;
+
+display: block;
+width: 100%;
+height: 100%;
+opacity: 1;
+${props => props.hovered ? 'top: 0px; opacity:1;' : 'top: 100%; opacity:0;'}
+background: rgba(78, 56, 56, 0.7);
+transition: opacity .4s, top .4s;
+`;
+
+export const PlayOverlayPlayButton = styled.span`
+    box-sizing: border-box;
+display: block;
+height: initial;
+width: 100%;
+padding: 0 8px;
+line-height: 40px;
+text-transform: uppercase;
+font-size: 0.8rem;
+font-weight: 400;
+text-align: center;
+border-radius: 50px;
+border: none;
+cursor: pointer;
+transition: all 0.1s ease -in;
+background-color: #00a9e0;
+color: #fff;
+border: 1px solid transparent;
+max-width: 75%;
+margin: 31% auto 0;
+line-height: 60px;
+font-size: 1.875rem;
+`;
+
+export const PlayOverlayTitle = styled.h4`
+    position: absolute;
+bottom: 14px;
+margin: 0;
+padding-left: 10px;
+font-family: "opensans-regular", Arial, sans-serif;
+font-weight: 400;
+line-height: 14px;
+font-size: 0.875rem;
+text-transform: initial;
+color: #00a9e0;
+
+`;
+
+
 

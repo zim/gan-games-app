@@ -30,7 +30,7 @@ const gamesData = [
     "name": "Hotline",
     "limit": "high limit",
     "status": "new",
-    "image": "image01.png",
+    "image": "img_138_01.png",
     "link": "/hotline"
   },
   {
@@ -38,31 +38,23 @@ const gamesData = [
     "name": "Neon Jwigle",
     "limit": "high limit",
     "status": "new",
-    "image": "image02.png",
+    "image": "img_138_02.png",
     "link": "/hotline"
   },
   {
     "id": "3",
-    "name": "Gambling Birds",
+    "name": "Sea Of Tranquility",
     "limit": "high limit",
-    "status": "popular",
-    "image": "image03.png",
+    "status": "old",
+    "image": "img_138_04.png",
     "link": "/hotline"
   },
   {
     "id": "4",
-    "name": "Sea Of Tranquility",
-    "limit": "high limit",
-    "status": "old",
-    "image": "image04.png",
-    "link": "/hotline"
-  },
-  {
-    "id": "5",
     "name": "Aloka",
     "limit": "high limit",
     "status": "old",
-    "image": "image05.png",
+    "image": "img_138_03.png",
     "link": "/hotline"
   },
   {
@@ -70,7 +62,7 @@ const gamesData = [
     "name": "Jack Hammer",
     "limit": "high limit",
     "status": "new",
-    "image": "image06.png",
+    "image": "img_138_06.png",
     "link": "/hotline"
   },
   {
@@ -78,7 +70,7 @@ const gamesData = [
     "name": "Smokin Hot Gems",
     "limit": "low limit",
     "status": "popular",
-    "image": "image07.png",
+    "image": "img_138_17.png",
     "link": "/hotline"
   },
   {
@@ -86,7 +78,7 @@ const gamesData = [
     "name": "Gonzo's Quest",
     "limit": "low limit",
     "status": "old",
-    "image": "image08.png",
+    "image": "img_138_09.png",
     "link": "/hotline"
   },
   {
@@ -94,7 +86,7 @@ const gamesData = [
     "name": "3hit Pay",
     "limit": "low limit",
     "status": "old",
-    "image": "image09.png",
+    "image": "img_288_01.png",
     "link": "/hotline"
   },
   {
@@ -102,7 +94,7 @@ const gamesData = [
     "name": "Spinata Grande",
     "limit": "low limit",
     "status": "old",
-    "image": "image10.png",
+    "image": "img_138_10.png",
     "link": "/hotline"
   },
   {
@@ -110,7 +102,7 @@ const gamesData = [
     "name": "Suger Smash",
     "limit": "high limit",
     "status": "old",
-    "image": "image11.png",
+    "image": "img_138_11.png",
     "link": "/hotline"
   },
   {
@@ -118,15 +110,15 @@ const gamesData = [
     "name": "Fruit Spin",
     "limit": "low limit",
     "status": "new",
-    "image": "image12.png",
+    "image": "img_138_05.png",
     "link": "/hotline"
   },
   {
     "id": "12",
     "name": "Day Of The Dead",
     "limit": "high limit",
-    "status": "old",
-    "image": "image013.png",
+    "status": "new",
+    "image": "img_138_14.png",
     "link": "/hotline"
   },
   {
@@ -134,7 +126,7 @@ const gamesData = [
     "name": "Dr Jekyl & Mr Hyde",
     "limit": "low limit",
     "status": "old",
-    "image": "image14.png",
+    "image": "img_138_15.png",
     "link": "/hotline"
   },
   {
@@ -142,7 +134,7 @@ const gamesData = [
     "name": "Jumanji",
     "limit": "high limit",
     "status": "old",
-    "image": "image15.png",
+    "image": "img_138_18.png",
     "link": "/hotline"
   },
   {
@@ -150,7 +142,7 @@ const gamesData = [
     "name": "Fa-Fa Twins",
     "limit": "low limit",
     "status": "old",
-    "image": "image16.png",
+    "image": "img_138_16.png",
     "link": "/fafa-twins"
   },
 
@@ -180,44 +172,16 @@ function App() {
           </Col>
         </Row>
 
-        <Row>
 
-          <Col size={1}>
-            <ImageResponsive src={gameImageSmall} alt="" />
-          </Col>
-          <Col size={1}>
-            <ImageResponsive src={gameImageSmall} alt="" />
-          </Col>
-          <Col size={1}>
-            <ImageResponsive src={gameImageSmall} alt="" />
-          </Col>
-          <Col size={1}>
-            <ImageResponsive src={gameImageSmall} alt="" />
-          </Col>
-          <Col size={1}>
-            <ImageResponsive src={gameImageSmall} alt="" />
-          </Col>
-          <Col size={1}>
-            <ImageResponsive src={gameImageSmall} alt="" />
-          </Col>
-          <Col size={1}>
-            <ImageResponsive src={gameImageSmall} alt="" />
-          </Col>
-
-        </Row>
 
         <Row>
 
-          <Col size={1}>
-            <ImageResponsive src={gameImageSmall} alt="" />
-          </Col>
+
 
           {gamesData.map((game, index) => {
 
             return (
-              <Col size={1}>
-
-
+              <Col>
                 <Game
                   id={game.id}
                   name={game.name}
@@ -226,24 +190,13 @@ function App() {
                   image={game.image}
                   link={game.link}
                 />
-
-
               </Col>
-
-
             );
           })}
 
         </Row>
 
-        <Row>
-          <Col size={2}>
-            Double Size
-          </Col>
-          <Col size={1}>
-            <img src={gameImageSmall} alt="" />
-          </Col>
-        </Row>
+
       </Grid>
 
     </div>

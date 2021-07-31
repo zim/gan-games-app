@@ -1,20 +1,55 @@
-const Game = ({ id, name, limit, status, image, link }) => {
-    console.log(id)
-    console.log(name)
-    console.log(limit)
-    console.log(status)
-    console.log(image)
-    console.log(link)
-    return (
-        <div>
+import React, { useState } from "react";
 
-            <a href={link} title="Adorned Peacock" data-name="Adorned Peacock" data-gameid="4750"><img src={image} alt="null" />
-                <span class="play-overlay">
-                    <span class="play-btn">Play</span>
-                    <h4 class="game-title hidden">{name}</h4>
-                </span>
+import {
+    H1,
+    Grid,
+    Row,
+    Col,
+    Header,
+    SearchInput,
+    ImageResponsive,
+    ImageIcon,
+    ThumbNailWrapper,
+    GameThumbnailWrapper,
+    HeaderControlsList,
+    HeaderButton,
+    HeaderControlsListItem,
+    PlayOverlayStyled,
+    PlayOverlayPlayButton,
+    PlayOverlayTitle,
+} from '../app_styles';
+
+import NewGameIcon from '../new-game.png';
+import HighStakesIcon from '../high-limit-game.png';
+
+const Game = ({ id, name, limit, status, image, link }) => {
+
+    const [isHovered, setIsHovered] = useState(false);
+    const onMouseEnter = (e) => {
+        setIsHovered(true);
+    };
+    const onMouseLeave = (e) => {
+        setIsHovered(false);
+    };
+
+
+
+    return (
+        <ThumbNailWrapper onMouseEnter={(e) => onMouseEnter(e)} onMouseLeave={(e) => onMouseLeave(e)}>
+
+            {(status === "new") && <ImageIcon src={NewGameIcon} alt="null" />}
+            {(limit === "high limit") && <ImageIcon src={HighStakesIcon} isHighLimit={true} alt="null" />}
+
+            <a href={link} title={name} data-name={name} data-gameid={id}>
+                <ImageResponsive src={image} alt="null" />
+                <PlayOverlayStyled hovered={isHovered}>
+                    <PlayOverlayPlayButton>Play</PlayOverlayPlayButton>
+
+                    <PlayOverlayTitle>{name}</PlayOverlayTitle>
+                </PlayOverlayStyled>
+
             </a>
-        </div>);
+        </ThumbNailWrapper>);
 }
 
 export default Game;

@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+import React, { useState } from "react";
 
 import { FaBeer } from 'react-icons/fa';
 import { BsStar, BsGrid3X3 } from 'react-icons/bs';
@@ -21,16 +21,13 @@ import {
   HeaderControlsListItem,
 } from './app_styles';
 
-import gameImageSmall from './game_image_138.png';
-import gameImageMedium from './game_image_288.png';
-
-const gamesData = [
+const gamesDataStore = [
   {
     "id": "1",
     "name": "Hotline",
     "limit": "high limit",
     "status": "new",
-    "image": "img_138_01.png",
+    "image": "img_138_01-min.png",
     "link": "/hotline"
   },
   {
@@ -38,7 +35,7 @@ const gamesData = [
     "name": "Neon Jwigle",
     "limit": "high limit",
     "status": "new",
-    "image": "img_138_02.png",
+    "image": "img_138_02-min.png",
     "link": "/hotline"
   },
   {
@@ -46,7 +43,7 @@ const gamesData = [
     "name": "Sea Of Tranquility",
     "limit": "high limit",
     "status": "old",
-    "image": "img_138_04.png",
+    "image": "img_138_04-min.png",
     "link": "/hotline"
   },
   {
@@ -54,7 +51,7 @@ const gamesData = [
     "name": "Aloka",
     "limit": "high limit",
     "status": "old",
-    "image": "img_138_03.png",
+    "image": "img_138_03-min.png",
     "link": "/hotline"
   },
   {
@@ -62,7 +59,7 @@ const gamesData = [
     "name": "Jack Hammer",
     "limit": "high limit",
     "status": "new",
-    "image": "img_138_06.png",
+    "image": "img_138_06-min.png",
     "link": "/hotline"
   },
   {
@@ -70,7 +67,7 @@ const gamesData = [
     "name": "Smokin Hot Gems",
     "limit": "low limit",
     "status": "popular",
-    "image": "img_138_17.png",
+    "image": "img_138_17-min.png",
     "link": "/hotline"
   },
   {
@@ -78,7 +75,7 @@ const gamesData = [
     "name": "Gonzo's Quest",
     "limit": "low limit",
     "status": "old",
-    "image": "img_138_09.png",
+    "image": "img_138_09-min.png",
     "link": "/hotline"
   },
   {
@@ -86,7 +83,7 @@ const gamesData = [
     "name": "3hit Pay",
     "limit": "low limit",
     "status": "old",
-    "image": "img_288_01.png",
+    "image": "img_288_01-min.png",
     "link": "/hotline"
   },
   {
@@ -94,7 +91,7 @@ const gamesData = [
     "name": "Spinata Grande",
     "limit": "low limit",
     "status": "old",
-    "image": "img_138_10.png",
+    "image": "img_138_10-min.png",
     "link": "/hotline"
   },
   {
@@ -102,7 +99,7 @@ const gamesData = [
     "name": "Suger Smash",
     "limit": "high limit",
     "status": "old",
-    "image": "img_138_11.png",
+    "image": "img_138_11-min.png",
     "link": "/hotline"
   },
   {
@@ -110,7 +107,7 @@ const gamesData = [
     "name": "Fruit Spin",
     "limit": "low limit",
     "status": "new",
-    "image": "img_138_05.png",
+    "image": "img_138_05-min.png",
     "link": "/hotline"
   },
   {
@@ -118,7 +115,7 @@ const gamesData = [
     "name": "Day Of The Dead",
     "limit": "high limit",
     "status": "new",
-    "image": "img_138_14.png",
+    "image": "img_138_14-min.png",
     "link": "/hotline"
   },
   {
@@ -126,7 +123,7 @@ const gamesData = [
     "name": "Dr Jekyl & Mr Hyde",
     "limit": "low limit",
     "status": "old",
-    "image": "img_138_15.png",
+    "image": "img_138_15-min.png",
     "link": "/hotline"
   },
   {
@@ -134,7 +131,7 @@ const gamesData = [
     "name": "Jumanji",
     "limit": "high limit",
     "status": "old",
-    "image": "img_138_18.png",
+    "image": "img_138_18-min.png",
     "link": "/hotline"
   },
   {
@@ -142,13 +139,42 @@ const gamesData = [
     "name": "Fa-Fa Twins",
     "limit": "low limit",
     "status": "old",
-    "image": "img_138_16.png",
+    "image": "img_138_16-min.png",
     "link": "/fafa-twins"
   },
 
 ]
 
+
+
+
+
 function App() {
+  const [gamesData, setGamesData] = useState(gamesDataStore);
+
+  const filterGames = (filter) => {
+    console.log(filter)
+
+    let filteredData;
+    switch (filter) {
+      case "all":
+        setGamesData(gamesDataStore);
+        break;
+      case "new":
+        filteredData = gamesDataStore.filter(game => game.status === "new")
+        setGamesData(filteredData);
+        break;
+      case "top":
+        filteredData = gamesDataStore.filter(game => game.limit === "high limit")
+        setGamesData(filteredData);
+        break;
+      default:
+      // code block
+    }
+
+  };
+
+
   return (
     <div className="App">
       <Grid>
@@ -159,9 +185,9 @@ function App() {
 
               <HeaderControlsWrapper>
                 <HeaderControlsList>
-                  <HeaderControlsListItem><HeaderButton onClick={() => console.log('allll')}>ALL<BsGrid3X3 color="grey" /></HeaderButton></HeaderControlsListItem>
-                  <HeaderControlsListItem><HeaderButton onClick={() => console.log('newww')}>NEW<BiBookmark color="grey" /></HeaderButton></HeaderControlsListItem>
-                  <HeaderControlsListItem><HeaderButton onClick={() => console.log('toppp')}>TOP<BsStar color="grey" /></HeaderButton></HeaderControlsListItem>
+                  <HeaderControlsListItem><HeaderButton onClick={() => filterGames('all')}>ALL<BsGrid3X3 color="grey" /></HeaderButton></HeaderControlsListItem>
+                  <HeaderControlsListItem><HeaderButton onClick={() => filterGames('new')}>NEW<BiBookmark color="grey" /></HeaderButton></HeaderControlsListItem>
+                  <HeaderControlsListItem><HeaderButton onClick={() => filterGames('top')}>TOP<BsStar color="grey" /></HeaderButton></HeaderControlsListItem>
                 </HeaderControlsList>
 
                 <SearchInput id="search-input" type="search" name="search" placeholder="Search" />
@@ -175,8 +201,6 @@ function App() {
 
 
         <Row>
-
-
 
           {gamesData.map((game, index) => {
 

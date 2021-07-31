@@ -152,6 +152,20 @@ const gamesDataStore = [
 function App() {
   const [gamesData, setGamesData] = useState(gamesDataStore);
 
+  const [searchString, setSearchString] = useState('');
+
+  const filterOptions = (e) => {
+    // let filteredData = gamesDataStore.filter(game => game.status === "new")
+    console.log('filterer')
+    console.log(e.target.value)
+    let filteredData = gamesDataStore.filter(game => {
+      return game.name.toLowerCase().match(e.target.value);
+    });
+
+    console.log(filteredData)
+    setGamesData(filteredData);
+  };
+
   const filterGames = (filter) => {
     console.log(filter)
 
@@ -190,7 +204,7 @@ function App() {
                   <HeaderControlsListItem><HeaderButton onClick={() => filterGames('top')}>TOP<BsStar color="grey" /></HeaderButton></HeaderControlsListItem>
                 </HeaderControlsList>
 
-                <SearchInput id="search-input" type="search" name="search" placeholder="Search" />
+                <input id="search-input" type="text" name="search" placeholder="Search" onChange={(e) => filterOptions(e)} />
               </HeaderControlsWrapper>
 
 
